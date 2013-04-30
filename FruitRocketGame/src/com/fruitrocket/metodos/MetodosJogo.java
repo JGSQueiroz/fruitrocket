@@ -18,6 +18,9 @@ public class MetodosJogo extends Tela {
 	
 	public int y1, y2, y3 = 0;
 	
+	public int posicaoCaixa;
+	
+	
 	public int velocidadeQueda1 = 9;
 	public int velocidadeQueda2 = 11;
 	public int velocidadeQueda3 = 21;
@@ -176,5 +179,34 @@ public class MetodosJogo extends Tela {
 		larguraTela = getWindowManager().getDefaultDisplay().getWidth();
 		alturaTela =  getWindowManager().getDefaultDisplay().getHeight();
 	
+	}
+	
+	public void lancaObjetos()
+	{
+		
+		if (controlaQueda(1) == 0)
+		{
+			y1 = controlaQuedaLateral(y1);
+		}
+		movimentaFruta(1, controlaQueda(1), y1);
+		
+		if (controlaQueda(2) == 0)
+		{
+			y2 = controlaQuedaLateral(y1);
+		}
+		movimentaFruta(2, controlaQueda(2), y2);
+		
+		if (controlaQueda(3) == 0)
+		{
+			y3 = controlaQuedaLateral(y3);
+		}
+		
+		movimentaFruta(3, controlaQueda(3), y3);
+		
+		
+		movimentaFruta(4,(int)(alturaTela * 0.9) , posicaoCaixa);
+		
+		
+		
 	}
 }
