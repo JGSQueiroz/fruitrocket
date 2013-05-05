@@ -2,13 +2,9 @@ package com.fruitrocket.metodos;
 
 
 import com.fruitrocket.com.R;
-import com.fruitrocket.frutas.Fruta;
 import com.fruitrocket.telas.Tela;
-
-import android.app.Activity;
 import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 
 
@@ -18,7 +14,9 @@ public class MetodosJogo extends Tela {
 	
 	public int y1, y2, y3 = 0;
 	
-	public int posicaoCaixa;
+	public int posicaoCaixa, alturaToque, totalPontosx = 0;
+	
+
 	
 	
 	public int velocidadeQueda1 = 9;
@@ -93,7 +91,7 @@ public class MetodosJogo extends Tela {
 		RelativeLayout.LayoutParams pos = new RelativeLayout.LayoutParams(ajustaTamanhoFruta(), ajustaTamanhoFruta());
 		pos.setMargins(distanciaEsquerda, distanciaChao, 0, 0);
 		imgFruta.setLayoutParams(pos);
-				
+		
 		return imgFruta;
 		
 	}
@@ -112,7 +110,6 @@ public class MetodosJogo extends Tela {
 			
 			if (fruta == 1 )
 			{
-				// velocidade impacta em zerar a altura 
 				alturaQueda1 = alturaQueda1 + velocidadeQueda1;
 				
 				if (alturaQueda1 >= alturaTela)
@@ -152,7 +149,7 @@ public class MetodosJogo extends Tela {
 			}
 			
 			
-			return null;
+			return null; 
 	}
 
 
@@ -161,12 +158,13 @@ public class MetodosJogo extends Tela {
 		
 			
 			int distanciaEsquerda = (int) (Math.random() * ( larguraTela));
-			distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;	
+			distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;
+			//esq = distanciaEsquerda;
 			if (distanciaEsquerda == x)
 			{
 				distanciaEsquerda = (int) (Math.random() * ( larguraTela));
 				distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;	
-				
+				//esq = distanciaEsquerda;
 				
 			}
 			return distanciaEsquerda;
@@ -202,11 +200,42 @@ public class MetodosJogo extends Tela {
 		}
 		
 		movimentaFruta(3, controlaQueda(3), y3);
+					
+		movimentaCaixaFrutas(alturaToque);
 		
 		
-		movimentaFruta(4,(int)(alturaTela * 0.9) , posicaoCaixa);
+	}
+	
+	public void movimentaCaixaFrutas(int alturaToque)
+	{
 		
+		if (alturaToque > ((int)(alturaTela * 0.87)) || alturaToque == 0)
+		{
+			movimentaFruta(4,(int)(alturaTela * 0.9) , posicaoCaixa);
+		}
 		
+	}
+	
+	public void marcaPonto(int posc, int posFruta, int altFruta)
+	{
 		
+		if ( (posFruta > (posc + 1) || posFruta < (posc + 1)) && (altFruta > 840))
+		{
+			
+			totalPontosx = totalPontosx + 2;
+		}
+		
+	}
+	
+	public int marcaPontos(int v1, int v2, int v3)
+	{
+		
+		if ( ((v2 < (v1 + 50)) && (v2 > (v1 - 50)) )  && (v3 > 840 ))
+		{
+			
+			totalPontosx = totalPontosx + 1;
+		}
+		
+		return totalPontosx;
 	}
 }
