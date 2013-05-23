@@ -384,6 +384,7 @@ public class MetodosJogo extends Tela {
 			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_9);
 		break;
+		//es
 		
 		
 		
