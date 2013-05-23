@@ -277,9 +277,7 @@ public class MetodosJogo extends Tela {
 		}
 		
 		ImageView imagemNumero;
-		
 		Drawable imagemDoPonto; 
-		imagemDoPonto = imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);;
 		 
 		
 		switch(p2){
@@ -287,52 +285,52 @@ public class MetodosJogo extends Tela {
 		
 		
 		case 1:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);
 		break;
 		
 		case 2:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_2);
 		break;
 		
 		case 3:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_3);
 		break;
 		
 		case 4:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_4);
 		break;
 		
 		case 5:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_5);
 		break;
 		
 		case 6:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_6);
 		break;
 		
 		case 7:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_7);
 		break;
 		
 		case 8:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_8);
 		break;
 		
 		case 9:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_9);
 		break;
 		
 		default:
-			imagemNumero = (ImageView)findViewById(5);
+			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_0);
 			
 		
@@ -343,47 +341,47 @@ public class MetodosJogo extends Tela {
 		switch(p3){
 		
 		case 1:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);
 		break;
 		
 		case 2:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_2);
 		break;
 		
 		case 3:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_3);
 		break;
 		
 		case 4:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_4);
 		break;
 		
 		case 5:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_5);
 		break;
 		
 		case 6:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_6);
 		break;
 		
 		case 7:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_7);
 		break;
 		
 		case 8:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_8);
 		break;
 		
 		case 9:
-			imagemNumero = (ImageView)findViewById(6);
+			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_9);
 		break;
 		
