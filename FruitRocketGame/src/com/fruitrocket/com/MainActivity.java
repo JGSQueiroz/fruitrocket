@@ -32,7 +32,8 @@ public class MainActivity extends MetodosJogo {
 		layout.addView(insereFruta("limao"));
 		layout.addView(insereFruta("pera"));
 		layout.addView(insereFruta("panela"));
-		
+		layout.addView(placar(10, 5));
+		layout.addView(placar(100, 6));
 						
 		texto  = (TextView)findViewById(R.id.texto);
 		texto.setText("alt é" + alturaTela );
@@ -58,8 +59,9 @@ public class MainActivity extends MetodosJogo {
 			    movimentaCaixaFrutas(alturaToque);
 				controle.postDelayed(this, 1);
 				//texto.setText("Pontos" + totalPontosx + "altura" + altchao + "caixa" + posicaocaix + "esq" + esq);
-				texto.setText("maca" + fruta1.getX() + "caixa" + caixa.getX() + "tot" + totalPontosx);
+				//texto.setText("maca" + fruta1.getX() + "caixa" + caixa.getX() + "tot" + totalPontosx);
 			
+				texto.setText("Total Pontos:" + totalPontosx);
 				//marcaPontos((int)(fruta1.getX()), (int)(caixa.getX()), fruta1.getTop());
 				
 				//texto.setText("altura é" + posicaoFruta(1, controlaQueda(1), y1) + "esq" + y1);

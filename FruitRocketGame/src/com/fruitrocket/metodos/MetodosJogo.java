@@ -33,7 +33,7 @@ public class MetodosJogo extends Tela {
 	{
 		Integer tamanhoFruta = ( (alturaTela * 10) /100); 
 		return  tamanhoFruta;
-	}
+	} 
 	
 		
 	public ImageView insereFruta(String refFruta)
@@ -234,8 +234,38 @@ public class MetodosJogo extends Tela {
 		{
 			
 			totalPontosx = totalPontosx + 1;
+			mudaPlacar();
 		}
 		
 		return totalPontosx;
+	}
+	
+	public ImageView placar(int x, int z)
+	{
+		
+		
+		ImageView ponto = new ImageView(this);
+		RelativeLayout.LayoutParams posicaoPontos = new RelativeLayout.LayoutParams(ajustaTamanhoFruta(), ajustaTamanhoFruta());
+		posicaoPontos.setMargins(x, 10, 0, 0);
+		ponto.setLayoutParams(posicaoPontos);
+		
+		
+		Drawable imagemPonto;
+			 imagemPonto = this.getResources().getDrawable(R.drawable.numero_0);
+			 ponto.setImageDrawable(imagemPonto);
+			 ponto.setId(z);
+			 return ponto;
+		
+	}
+	
+	public ImageView mudaPlacar()
+	{
+		ImageView imagemNumero = (ImageView)findViewById(5);
+		
+		Drawable imagemDoPonto;
+		 imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);
+		 imagemNumero.setImageDrawable(imagemDoPonto);
+		
+		return imagemNumero;
 	}
 }
