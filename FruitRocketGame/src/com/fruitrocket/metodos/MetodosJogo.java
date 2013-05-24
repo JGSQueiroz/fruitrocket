@@ -274,16 +274,7 @@ public class MetodosJogo extends Tela {
 		
 		String refPontos1 = refPts.substring(0,1);
 		p1 = Integer.parseInt(refPontos1);
-		int p2 = 999;
-		
-		
-		String refPontos2;
-		
-		if (refPontos > 9)
-		{
-			refPontos2 = refPts.substring(1,2);
-			p2 = Integer.parseInt(refPontos2);
-		}
+				
 		
 		ImageView imagemNumero;
 		Drawable imagemDoPonto; 
