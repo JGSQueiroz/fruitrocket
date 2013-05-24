@@ -4,6 +4,7 @@ package com.fruitrocket.metodos;
 import com.fruitrocket.com.R;
 import com.fruitrocket.telas.Tela;
 import android.graphics.drawable.Drawable;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
 
@@ -254,6 +255,7 @@ public class MetodosJogo extends Tela {
 			 imagemPonto = this.getResources().getDrawable(R.drawable.numero_0);
 			 ponto.setImageDrawable(imagemPonto);
 			 ponto.setId(z);
+			 ponto.setVisibility(View.GONE);
 			 return ponto;
 		
 	}
@@ -287,11 +289,13 @@ public class MetodosJogo extends Tela {
 		case 1:
 			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);
+			imagemNumero.setVisibility(View.VISIBLE);
 		break;
 		
 		case 2:
 			imagemNumero = (ImageView)findViewById(6);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_2);
+			
 		break;
 		
 		case 3:
@@ -343,6 +347,7 @@ public class MetodosJogo extends Tela {
 		case 1:
 			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);
+			imagemNumero.setVisibility(View.VISIBLE);
 		break;
 		
 		case 2:
@@ -384,13 +389,14 @@ public class MetodosJogo extends Tela {
 			imagemNumero = (ImageView)findViewById(5);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_9);
 		break;
-		//es
+		
 		
 		
 		
 		}
 		
 		imagemNumero.setImageDrawable(imagemDoPonto);
+		
 		
 		return imagemNumero;
 	}

@@ -32,8 +32,8 @@ public class MainActivity extends MetodosJogo {
 		layout.addView(insereFruta("limao"));
 		layout.addView(insereFruta("pera"));
 		layout.addView(insereFruta("panela"));
-		layout.addView(placar(10, 5));
-		layout.addView(placar(70, 6));
+		layout.addView(placar(10, 6));
+		layout.addView(placar(70, 5));
 						
 		texto  = (TextView)findViewById(R.id.texto);
 		texto.setText("alt é" + alturaTela );
