@@ -265,12 +265,12 @@ public class MetodosJogo extends Tela {
 			 ponto.setImageDrawable(imagemPonto);
 			 ponto.setId(z);
 			 
-			 if (ponto.getId() == 10 || ponto.getId() == 20)
+			 if (ponto.getId() == 10 || ponto.getId() == 20 || ponto.getId() == 21)
 			 {
 			 
 				 ponto.setVisibility(View.VISIBLE);
 			 }
-			 else if(ponto.getId() == 11 || ponto.getId() == 21)
+			 else if(ponto.getId() == 11)
 			 {
 				 
 				 ponto.setVisibility(View.GONE);
@@ -365,7 +365,6 @@ public class MetodosJogo extends Tela {
 	}
 	
 
-	
 	public ImageView mudaPlacar2(int refPontos)
 	{
 		
