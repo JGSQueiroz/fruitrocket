@@ -17,6 +17,7 @@ public class MetodosJogo extends Tela {
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
+	public int tempoJogo = 30;
 
 	
 	
@@ -174,6 +175,7 @@ public class MetodosJogo extends Tela {
 	}
 	
 	
+	
 	public void capturaTamanhoTela()
 	{
 		larguraTela = getWindowManager().getDefaultDisplay().getWidth();
@@ -263,12 +265,12 @@ public class MetodosJogo extends Tela {
 			 ponto.setImageDrawable(imagemPonto);
 			 ponto.setId(z);
 			 
-			 if (ponto.getId() == 10)
+			 if (ponto.getId() == 10 || ponto.getId() == 20)
 			 {
 			 
 				 ponto.setVisibility(View.VISIBLE);
 			 }
-			 else
+			 else if(ponto.getId() == 11 || ponto.getId() == 21)
 			 {
 				 
 				 ponto.setVisibility(View.GONE);
@@ -362,6 +364,7 @@ public class MetodosJogo extends Tela {
 		return imagemNumero;
 	}
 	
+
 	
 	public ImageView mudaPlacar2(int refPontos)
 	{
@@ -438,6 +441,215 @@ public class MetodosJogo extends Tela {
 		
 		}
 		
+		imagemNumero.setImageDrawable(imagemDoPonto);
+		return imagemNumero;
+	}
+	
+
+	public Integer cronometro()
+	{
+		
+		
+		
+		
+		if (tempoJogo > 9)
+		{
+			mudaCronometro(tempoJogo);
+			mudaCronometro2(tempoJogo);
+			
+			
+		}
+		else
+		{
+			
+			mudaCronometro(tempoJogo);
+			mudaCronometro2(1000);
+			
+		}
+		
+		tempoJogo = tempoJogo - 1;
+		return tempoJogo;
+	}
+	
+	public ImageView mudaCronometro(int refPontos)
+	{
+		
+		
+		String refPts = Integer.toString(refPontos);
+		
+		String refPontos1 = refPts.substring(0,1);
+		p1 = Integer.parseInt(refPontos1);
+				
+		
+		ImageView imagemNumero;
+		Drawable imagemDoPonto; 
+		 
+		
+		switch(p1){
+		
+		case 0:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_0);
+			imagemNumero.setVisibility(View.VISIBLE);
+		break;
+		
+		case 1:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);
+			imagemNumero.setVisibility(View.VISIBLE);
+		
+		break;
+		
+		case 2:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_2);
+			
+		break;
+		
+		case 3:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_3);
+		break;
+		
+		case 4:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_4);
+		break;
+		
+		case 5:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_5);
+		break;
+		
+		case 6:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_6);
+		break;
+		
+		case 7:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_7);
+		break;
+		
+		case 8:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_8);
+		break;
+		
+		case 9:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_9);
+		break;
+		
+		
+		default:
+			imagemNumero = (ImageView)findViewById(20);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_0);
+			
+		
+		}
+		
+		
+		 
+				
+		imagemNumero.setImageDrawable(imagemDoPonto);
+		return imagemNumero;
+	}
+	
+	
+	public ImageView mudaCronometro2(int refPontos)
+	{
+		
+		if (refPontos == 1000)
+		{
+		p1 = 1000;	
+			
+		}
+		
+		else
+		{
+		String refPts = Integer.toString(refPontos);
+		
+		String refPontos1 = refPts.substring(1,2);
+		p1 = Integer.parseInt(refPontos1);
+		}		
+		
+		ImageView imagemNumero;
+		Drawable imagemDoPonto; 
+		 
+		
+		switch(p1){
+		
+		case 0:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_0);
+			imagemNumero.setVisibility(View.VISIBLE);
+		break;
+		
+		case 1:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_1);
+			imagemNumero.setVisibility(View.VISIBLE);
+		
+		break;
+		
+		case 2:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_2);
+			
+		break;
+		
+		case 3:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_3);
+		break;
+		
+		case 4:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_4);
+		break;
+		
+		case 5:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_5);
+		break;
+		
+		case 6:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_6);
+		break;
+		
+		case 7:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_7);
+		break;
+		
+		case 8:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_8);
+		break;
+		
+		case 9:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_9);
+		break;
+		
+		case 1000:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_0);
+			imagemNumero.setVisibility(View.GONE);
+		break;
+		
+		default:
+			imagemNumero = (ImageView)findViewById(21);
+			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_0);
+			
+		
+		}
+		
+		
+		 
+				
 		imagemNumero.setImageDrawable(imagemDoPonto);
 		return imagemNumero;
 	}

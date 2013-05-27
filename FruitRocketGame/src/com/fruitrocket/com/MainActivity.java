@@ -34,6 +34,9 @@ public class MainActivity extends MetodosJogo {
 		layout.addView(insereFruta("panela"));
 		layout.addView(placar(10, 10));
 		layout.addView(placar(50, 11));
+		
+		layout.addView(placar(200, 20));
+		layout.addView(placar(240, 21));
 						
 		texto  = (TextView)findViewById(R.id.texto);
 		texto.setText("alt é" + alturaTela );
@@ -61,7 +64,7 @@ public class MainActivity extends MetodosJogo {
 				//texto.setText("Pontos" + totalPontosx + "altura" + altchao + "caixa" + posicaocaix + "esq" + esq);
 				//texto.setText("maca" + fruta1.getX() + "caixa" + caixa.getX() + "tot" + totalPontosx);
 			
-				texto.setText("Total Pontos:" + totalPontosx);
+				//texto.setText("Total Pontos:" + totalPontosx);
 				//marcaPontos((int)(fruta1.getX()), (int)(caixa.getX()), fruta1.getTop());
 				
 				//texto.setText("altura é" + posicaoFruta(1, controlaQueda(1), y1) + "esq" + y1);
@@ -82,6 +85,16 @@ public class MainActivity extends MetodosJogo {
 			}
 		};	
 		controle.postDelayed(somaPontos, 1);
+		
+		Runnable tempoCorrido  = new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				controle.postDelayed(this, 1000);
+				texto.setText("Tempo:" + cronometro());
+			}
+		};controle.postDelayed(tempoCorrido, 1000); 
 	}
 	
 	
