@@ -13,7 +13,7 @@ public class MetodosJogo extends Tela {
 	
 	public Integer alturaTela, larguraTela;
 	
-	public int y1, y2, y3 = 0;
+	public int y1, y2, y3, p1 = 0;
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
@@ -79,6 +79,7 @@ public class MetodosJogo extends Tela {
 			 return image;
 			
 		}
+		
 		
 		return image;
 	}
@@ -261,15 +262,26 @@ public class MetodosJogo extends Tela {
 			 imagemPonto = this.getResources().getDrawable(R.drawable.numero_0);
 			 ponto.setImageDrawable(imagemPonto);
 			 ponto.setId(z);
-			 ponto.setVisibility(View.GONE);
-			 return ponto;
+			 
+			 if (ponto.getId() == 10)
+			 {
+			 
+				 ponto.setVisibility(View.VISIBLE);
+			 }
+			 else
+			 {
+				 
+				 ponto.setVisibility(View.GONE);
+						 	
+			 }
+				 return ponto;
 		
 	}
 	
 	public ImageView mudaPlacar(int refPontos)
 	{
 		
-		int p1 = 0;
+		
 		String refPts = Integer.toString(refPontos);
 		
 		String refPontos1 = refPts.substring(0,1);
