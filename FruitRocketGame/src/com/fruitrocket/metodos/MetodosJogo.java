@@ -17,7 +17,7 @@ public class MetodosJogo extends Tela {
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
-	public int tempoJogo = 30;
+	public int tempoJogo = 80;
 
 	
 	
@@ -255,14 +255,41 @@ public class MetodosJogo extends Tela {
 		
 		
 		ImageView ponto = new ImageView(this);
-		RelativeLayout.LayoutParams posicaoPontos = new RelativeLayout.LayoutParams(ajustaTamanhoFruta(), ajustaTamanhoFruta());
-		posicaoPontos.setMargins(x, 10, 0, 0);
+		RelativeLayout.LayoutParams posicaoPontos = new RelativeLayout.LayoutParams((int)( ajustaTamanhoFruta() * 0.6), (int)(ajustaTamanhoFruta() * 0.6));
+		
+		if (z == 10 || z == 11)
+		{
+			posicaoPontos.setMargins(x, ((int)(alturaTela * 0.01)), 0, 0);
+		}
+		
+		else
+		{
+			
+			posicaoPontos.setMargins(x, ((int)(alturaTela * 0.1)), 0, 0);
+			
+		}	
 		ponto.setLayoutParams(posicaoPontos);
 		
 		
 		Drawable imagemPonto;
-			 imagemPonto = this.getResources().getDrawable(R.drawable.numero_0);
-			 ponto.setImageDrawable(imagemPonto);
+			
+		if (z == 30)
+		{
+			
+			imagemPonto = this.getResources().getDrawable(R.drawable.pontos);
+			
+		}
+		else if (z == 40)
+		{
+			imagemPonto = this.getResources().getDrawable(R.drawable.tempo);
+			
+			
+		}
+		else
+		{	
+			imagemPonto = this.getResources().getDrawable(R.drawable.numero_0);
+		}
+			ponto.setImageDrawable(imagemPonto);
 			 ponto.setId(z);
 			 
 			 if (ponto.getId() == 10 || ponto.getId() == 20 || ponto.getId() == 21)

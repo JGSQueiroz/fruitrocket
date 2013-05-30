@@ -8,11 +8,63 @@
     android:id="@+id/container">
 
     
+	<ImageView
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/pontos"
+	    android:id="@+id/labelPontos"
+	    
+	    />
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/tempo"
+	    android:layout_below="@id/labelPontos"
+	    android:id="@+id/labelTempo"
+	    />
+	
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/numero_9"
+	    android:layout_toRightOf="@id/labelPontos"
+	    android:id="@+id/pontos1"
+	    />
+	
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/numero_8"
+	    android:layout_toRightOf="@id/pontos1"
+	    android:id="@+id/pontos2"
+	    
+	    />
+	
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/numero_7"
+	    android:layout_below="@id/pontos1"
+	    android:layout_toRightOf="@id/labelTempo"
+	    android:id="@+id/tempo1"
+	   
+	    />
+     <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@id/tempo1"
+        android:layout_below="@id/pontos2"
+        android:src="@drawable/numero_3" 
+        android:id="@+id/tempo2"
+        />
+	
     <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="30sp"
+        android:textSize="20sp"
         android:textColor="#000000"
         android:id="@+id/texto"
         />
+
+
 </RelativeLayout>
