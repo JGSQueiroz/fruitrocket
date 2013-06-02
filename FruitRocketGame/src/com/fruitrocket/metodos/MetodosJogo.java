@@ -475,21 +475,7 @@ public class MetodosJogo extends Tela {
 		
 		
 		mudaTempo(tempoJogo);
-		if (tempoJogo > 9)
-		{
-			mudaCronometro(tempoJogo);
-			mudaCronometro2(tempoJogo);
 		
-			
-			
-		}
-		else
-		{
-			
-			mudaCronometro(tempoJogo);
-			mudaCronometro2(1000);
-			
-		}
 		
 		tempoJogo = tempoJogo - 1;
 		return tempoJogo;
