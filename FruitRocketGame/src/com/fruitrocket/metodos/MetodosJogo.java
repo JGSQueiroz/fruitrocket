@@ -13,11 +13,11 @@ public class MetodosJogo extends Tela {
 	
 	public Integer alturaTela, larguraTela;
 	
-	public int y1, y2, y3, p1 = 0;
+	public int y1, y2, y3, p1, p2 = 0;
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
-	public int tempoJogo = 80;
+	public int tempoJogo = 99;
 
 	
 	
@@ -238,10 +238,11 @@ public class MetodosJogo extends Tela {
 		{
 			
 			totalPontosx = totalPontosx + 1;
-			mudaPlacar(totalPontosx);
+			//mudaPlacar(totalPontosx);
+			mudaPontos(totalPontosx);
 			if (totalPontosx > 9)
 			{
-				mudaPlacar2(totalPontosx);
+				//mudaPlacar2(totalPontosx);
 				
 				
 			}
@@ -327,6 +328,8 @@ public class MetodosJogo extends Tela {
 			imagemNumero = (ImageView)findViewById(10);
 			imagemDoPonto = this.getResources().getDrawable(R.drawable.numero_0);
 			imagemNumero.setVisibility(View.VISIBLE);
+			
+	
 		break;
 		
 		case 1:
@@ -478,10 +481,12 @@ public class MetodosJogo extends Tela {
 		
 		
 		
+		mudaTempo(tempoJogo);
 		if (tempoJogo > 9)
 		{
 			mudaCronometro(tempoJogo);
 			mudaCronometro2(tempoJogo);
+		
 			
 			
 		}
@@ -678,5 +683,116 @@ public class MetodosJogo extends Tela {
 				
 		imagemNumero.setImageDrawable(imagemDoPonto);
 		return imagemNumero;
+	}
+	
+	public void mudaPontos(int xyz)
+	{
+		
+		
+		String refPts = Integer.toString(xyz);
+		
+		String refPontos1 = refPts.substring(0,1);
+		p1 = Integer.parseInt(refPontos1);
+		
+		
+		
+		ImageView pontoUm = (ImageView)findViewById(R.id.pontos1);
+		ImageView pontoDois = (ImageView)findViewById(R.id.pontos2);
+		
+		Integer numeros[] = new Integer[10];
+		
+		numeros[0] = R.drawable.numero_0;
+		numeros[1] = R.drawable.numero_1;
+		numeros[2] = R.drawable.numero_2;
+		numeros[3] = R.drawable.numero_3;
+		numeros[4] = R.drawable.numero_4;
+		numeros[5] = R.drawable.numero_5;
+		numeros[6] = R.drawable.numero_6;
+		numeros[7] = R.drawable.numero_7;
+		numeros[8] = R.drawable.numero_8;
+		numeros[9] = R.drawable.numero_9;
+		
+		
+		Drawable imagem = this.getResources().getDrawable(numeros[p1]);
+		pontoUm.setImageDrawable(imagem);
+		
+		if (xyz > 9)
+		{
+			String refPontos2 = refPts.substring(1,2);
+			p2 = Integer.parseInt(refPontos2);
+			
+			Drawable imagem2 = this.getResources().getDrawable(numeros[p2]);
+			pontoDois.setImageDrawable(imagem2);
+			
+			
+		}
+		else
+		{
+			
+			
+		}
+		
+	}
+	
+	public void mudaTempo(int xyz)
+	{
+		
+		Integer numeros[] = new Integer[10];
+		
+		numeros[0] = R.drawable.numero_0;
+		numeros[1] = R.drawable.numero_1;
+		numeros[2] = R.drawable.numero_2;
+		numeros[3] = R.drawable.numero_3;
+		numeros[4] = R.drawable.numero_4;
+		numeros[5] = R.drawable.numero_5;
+		numeros[6] = R.drawable.numero_6;
+		numeros[7] = R.drawable.numero_7;
+		numeros[8] = R.drawable.numero_8;
+		numeros[9] = R.drawable.numero_9;
+		
+
+		ImageView tempoUm = (ImageView)findViewById(R.id.tempo1);
+		ImageView tempoDois = (ImageView)findViewById(R.id.tempo2);
+		
+		if (xyz > 9)
+		{
+			
+			String refPts = Integer.toString(xyz);
+			
+			String refPontos1 = refPts.substring(0,1);
+			p1 = Integer.parseInt(refPontos1);
+			
+			
+				
+			
+			Drawable imagem = this.getResources().getDrawable(numeros[p1]);
+			tempoUm.setImageDrawable(imagem);
+			
+			String refPontos2 = refPts.substring(1,2);
+			p2 = Integer.parseInt(refPontos2);
+			
+			Drawable imagem2 = this.getResources().getDrawable(numeros[p2]);
+			tempoDois.setImageDrawable(imagem2);
+			
+			
+			
+		}
+		
+		else
+		{
+
+			String refPts = Integer.toString(xyz);
+			
+			String refPontos1 = refPts.substring(0,1);
+			p1 = Integer.parseInt(refPontos1);
+			
+			
+			Drawable imagem = this.getResources().getDrawable(numeros[p1]);
+			tempoUm.setImageDrawable(imagem);
+			
+			tempoDois.setVisibility(View.GONE);
+			
+		}	
+		
 	}
 }

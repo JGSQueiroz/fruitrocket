@@ -27,7 +27,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/pontos1"
-	    android:src="@drawable/numero_9"
+	    android:src="@drawable/numero_0"
 	    android:layout_toRightOf="@id/labelPontos"
 	    />
 	
@@ -35,7 +35,7 @@
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
 	    android:id="@+id/pontos2"
-	    android:src="@drawable/numero_8"
+	    android:src="@drawable/numero_0"
 	    android:layout_toRightOf="@id/pontos1"
 	    />
 	

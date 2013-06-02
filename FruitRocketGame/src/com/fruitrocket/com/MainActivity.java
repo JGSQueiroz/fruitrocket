@@ -43,8 +43,9 @@ public class MainActivity extends MetodosJogo {
 		layout.addView(insereFruta("pera"));
 		layout.addView(insereFruta("panela"));
 		
-		layout.addView(placar((int)(larguraTela * 0.3), 10));
-		layout.addView(placar((int) (larguraTela * 0.35), 11));
+		//Os metodos abaixo inserem o placar
+		//layout.addView(placar((int)(larguraTela * 0.3), 10));
+		//layout.addView(placar((int) (larguraTela * 0.35), 11));
 		//layout.addView(placar(100, 11));
 		
 		
