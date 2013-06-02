@@ -238,14 +238,7 @@ public class MetodosJogo extends Tela {
 		{
 			
 			totalPontosx = totalPontosx + 1;
-			//mudaPlacar(totalPontosx);
 			mudaPontos(totalPontosx);
-			if (totalPontosx > 9)
-			{
-				//mudaPlacar2(totalPontosx);
-				
-				
-			}
 		}
 		
 		return totalPontosx;
@@ -726,11 +719,7 @@ public class MetodosJogo extends Tela {
 			
 			
 		}
-		else
-		{
-			
-			
-		}
+		
 		
 	}
 	
@@ -762,9 +751,6 @@ public class MetodosJogo extends Tela {
 			String refPontos1 = refPts.substring(0,1);
 			p1 = Integer.parseInt(refPontos1);
 			
-			
-				
-			
 			Drawable imagem = this.getResources().getDrawable(numeros[p1]);
 			tempoUm.setImageDrawable(imagem);
 			
@@ -773,8 +759,6 @@ public class MetodosJogo extends Tela {
 			
 			Drawable imagem2 = this.getResources().getDrawable(numeros[p2]);
 			tempoDois.setImageDrawable(imagem2);
-			
-			
 			
 		}
 		
@@ -789,7 +773,6 @@ public class MetodosJogo extends Tela {
 			
 			Drawable imagem = this.getResources().getDrawable(numeros[p1]);
 			tempoUm.setImageDrawable(imagem);
-			
 			tempoDois.setVisibility(View.GONE);
 			
 		}	
