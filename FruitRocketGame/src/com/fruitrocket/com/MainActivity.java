@@ -5,6 +5,8 @@ import com.fruitrocket.metodos.MetodosJogo;
 
 
 import android.annotation.SuppressLint;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.DisplayMetrics;
@@ -19,50 +21,27 @@ public class MainActivity extends MetodosJogo {
 	TextView texto;
 	ImageView tempoLabel, pontosLabel;
 
+	 SoundPool ssp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		 capturaTamanhoTela();
+		ssp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
+		int ponto = ssp.load(this, R.raw.beep, 1); 
+		ssp.play(ponto, 1, 1, 0, 0, 1);
 		
 		
-		
-		 DisplayMetrics metrics =  getApplicationContext().getResources().getDisplayMetrics(); 
-	 	 final int xf = (int)metrics.widthPixels;
-		
+		capturaTamanhoTela();
 			
-		RelativeLayout layout = (RelativeLayout)findViewById(R.id.container);
-		
-		
-		
-		layout.addView(insereFruta("maca"));
-		layout.addView(insereFruta("limao"));
-		layout.addView(insereFruta("pera"));
-		layout.addView(insereFruta("panela"));
-		
-		//Os metodos abaixo inserem o placar
-		//layout.addView(placar((int)(larguraTela * 0.3), 10));
-		//layout.addView(placar((int) (larguraTela * 0.35), 11));
-		//layout.addView(placar(100, 11));
-		
-		
-		//layout.addView(placar(50, 30));
-		//layout.addView(placar(100, 40));
-		
-		
-		
-		//layout.addView(placar(200, 20));
-		//layout.addView(placar(230, 21));
-						
 		texto  = (TextView)findViewById(R.id.texto);
 		texto.setText("alt é" + alturaTela );
 	
-		final ImageView fruta1 = (ImageView)findViewById(1);
-		final ImageView fruta2 = (ImageView)findViewById(2);
-		final ImageView fruta3 = (ImageView)findViewById(3);
-		final ImageView caixa = (ImageView)findViewById(4);
+		final ImageView fruta1 = (ImageView)findViewById(R.id.maca);
+		final ImageView fruta2 = (ImageView)findViewById(R.id.limao);
+		final ImageView fruta3 = (ImageView)findViewById(R.id.pera);
+		final ImageView caixa = (ImageView)findViewById(R.id.panela);
 		
 		
 		
@@ -79,14 +58,7 @@ public class MainActivity extends MetodosJogo {
 				lancaObjetos();  
 			    movimentaCaixaFrutas(alturaToque);
 				controle.postDelayed(this, 1);
-				//texto.setText("Pontos" + totalPontosx + "altura" + altchao + "caixa" + posicaocaix + "esq" + esq);
-				//texto.setText("maca" + fruta1.getX() + "caixa" + caixa.getX() + "tot" + totalPontosx);
-			
-				//texto.setText("Total Pontos:" + totalPontosx);
-				//marcaPontos((int)(fruta1.getX()), (int)(caixa.getX()), fruta1.getTop());
-				
-				//texto.setText("altura é" + posicaoFruta(1, controlaQueda(1), y1) + "esq" + y1);
-			}
+							}
 		};
 			controle.postDelayed(acionaJogo, 1);
 	
@@ -96,13 +68,10 @@ public class MainActivity extends MetodosJogo {
 			public void run() {
 				// TODO Auto-generated method stub
 				controle.postDelayed(this, 1000);
-				//marcaPontos((int)(fruta1.getX()), (int)(caixa.getX()), fruta1.getTop());
-				//marcaPontos((int)(fruta2.getX()), (int)(caixa.getX()), fruta2.getTop());
-				//marcaPontos((int)(fruta3.getX()), (int)(caixa.getX()), fruta3.getTop());
 				
 				marcaPontos((int)(fruta1.getLeft()), (int)(caixa.getLeft()), fruta1.getTop());
-				marcaPontos((int)(fruta2.getLeft()), (int)(caixa.getLeft()), fruta2.getTop());
-				marcaPontos((int)(fruta3.getLeft()), (int)(caixa.getLeft()), fruta3.getTop());
+				//marcaPontos((int)(fruta2.getLeft()), (int)(caixa.getLeft()), fruta2.getTop());
+				//marcaPontos((int)(fruta3.getLeft()), (int)(caixa.getLeft()), fruta3.getTop());
 				
 				
 			}
@@ -115,7 +84,10 @@ public class MainActivity extends MetodosJogo {
 			public void run() {
 				// TODO Auto-generated method stub
 				controle.postDelayed(this, 1000);
-				texto.setText("Tempo:" + cronometro() + "" + xf);
+				//texto.setText("Tempo:" + cronometro() + "" + xf + " o id " + frutaImg(1) );
+				texto.setText("Altura Tempo" + larguraTela );
+				cronometro();
+				
 			}
 		};controle.postDelayed(tempoCorrido, 1000); 
 	}
@@ -131,13 +103,9 @@ public class MainActivity extends MetodosJogo {
 		
 		if (event.getAction() == MotionEvent.ACTION_MOVE)
 		{
-		//posicaoCaixa = (int) event.getX();
 		posicaoCaixa = (int) event.getX();
-			
-			
 		alturaToque = (int) event.getY();
-		//texto.setText("movimento" + posicaoCaixa + " altura " + alturaToque  + "pontos" + totalPontos);
-		
+		somAlertaxxx();
 
 		}
 		
@@ -146,6 +114,14 @@ public class MainActivity extends MetodosJogo {
 		return super.onTouchEvent(event);
 		
 		
+		
+	}
+	public void somAlertaxxx()
+	{
+		
+		soundp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
+		int ponto = soundp.load(this, R.raw.beep, 1); 
+		soundp.play(ponto, 1, 1, 0, 0, 1);
 		
 	}
 	

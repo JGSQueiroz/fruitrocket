@@ -4,6 +4,8 @@ package com.fruitrocket.metodos;
 import com.fruitrocket.com.R;
 import com.fruitrocket.telas.Tela;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
+import android.media.SoundPool;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
@@ -19,13 +21,13 @@ public class MetodosJogo extends Tela {
 	
 	public int tempoJogo = 99;
 
+	// velocidades ok - 6 fruta2
 	
-	
-	public int velocidadeQueda1 = 9;
-	public int velocidadeQueda2 = 11;
-	public int velocidadeQueda3 = 21;
+	public int velocidadeQueda1 = 6;
+	public int velocidadeQueda2 = 16;
+	public int velocidadeQueda3 = 6;
 			
-	
+	public SoundPool soundp; 
 
 	int alturaQueda1, alturaQueda2, alturaQueda3, alturaQueda4 = 0;
 	int alturaQueda = 0;
@@ -38,53 +40,37 @@ public class MetodosJogo extends Tela {
 	} 
 	
 		
-	public ImageView insereFruta(String refFruta)
-	{
-		
-		ImageView image = new ImageView(this);
-		
-		Drawable imagemFruta;
-		
-		if (refFruta == "maca")
-		{
-			 imagemFruta = this.getResources().getDrawable(R.drawable.apple1);
-			 image.setImageDrawable(imagemFruta);
-			 image.setId(1);
-			 return image;
-		}
-		
-		
-		
-		if (refFruta == "limao")
-		{
-			 imagemFruta = this.getResources().getDrawable(R.drawable.lemon1);
-			 image.setImageDrawable(imagemFruta);
-			 image.setId(2);
-			 return image;
-		}
-		
-		
-		if (refFruta == "pera")
-		{
-			 imagemFruta = this.getResources().getDrawable(R.drawable.peach);
-			 image.setImageDrawable(imagemFruta);
-			 image.setId(3);
-			 return image;
-		}
-		
-		if (refFruta == "panela")
-		{
-			 imagemFruta = this.getResources().getDrawable(R.drawable.bin);
-			 image.setImageDrawable(imagemFruta);
-			 image.setId(4);
-			 return image;
-			
-		}
-		
-		
-		return image;
-	}
+	
 
+	public Integer frutaImg(int z)
+	{
+		Integer zx = 0;
+		if (z == 1)
+		{	
+		ImageView ff = (ImageView)findViewById(R.id.maca);
+		zx = ff.getId();
+		}
+		
+		if (z == 2)
+		{	
+		ImageView ff = (ImageView)findViewById(R.id.limao);
+		zx = ff.getId();
+		}
+		
+		if (z == 3)
+		{	
+		ImageView ff = (ImageView)findViewById(R.id.pera);
+		zx = ff.getId();
+		}
+		
+		if (z == 4)
+		{
+			
+		ImageView ff = (ImageView)findViewById(R.id.panela);
+		zx = ff.getId();	
+		}
+		return zx;
+	}
 	
 	public ImageView movimentaFruta(int codFruta, int distanciaChao, int distanciaEsquerda)
 	{
@@ -163,13 +149,7 @@ public class MetodosJogo extends Tela {
 			int distanciaEsquerda = (int) (Math.random() * ( larguraTela));
 			distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;
 			//esq = distanciaEsquerda;
-			if (distanciaEsquerda == x)
-			{
-				distanciaEsquerda = (int) (Math.random() * ( larguraTela));
-				distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;	
-				//esq = distanciaEsquerda;
-				
-			}
+			
 			return distanciaEsquerda;
 		
 	}
@@ -190,21 +170,32 @@ public class MetodosJogo extends Tela {
 		{
 			y1 = controlaQuedaLateral(y1);
 		}
-		movimentaFruta(1, controlaQueda(1), y1);
+		else
+		{
+			movimentaFruta(frutaImg(1), controlaQueda(1), y1);
+		}
+		
+		
 		
 		if (controlaQueda(2) == 0)
 		{
-			y2 = controlaQuedaLateral(y1);
+			y2 = controlaQuedaLateral(y2);
 		}
-		movimentaFruta(2, controlaQueda(2), y2);
+		else
+		{	
+		movimentaFruta(frutaImg(2), controlaQueda(2), y2);
+		}
+		
 		
 		if (controlaQueda(3) == 0)
 		{
 			y3 = controlaQuedaLateral(y3);
 		}
+		else
+		{
+		movimentaFruta(frutaImg(3), controlaQueda(3), y3);
+		}			
 		
-		movimentaFruta(3, controlaQueda(3), y3);
-					
 		movimentaCaixaFrutas(alturaToque);
 		
 		
@@ -215,30 +206,23 @@ public class MetodosJogo extends Tela {
 		
 		if (alturaToque > ((int)(alturaTela * 0.87)) || alturaToque == 0)
 		{
-			movimentaFruta(4,(int)(alturaTela * 0.9) , posicaoCaixa);
+			movimentaFruta(frutaImg(4),(int)(alturaTela * 0.9) , posicaoCaixa);
+			//movimentaFruta(4,(int)(alturaTela * 0.9) , posicaoCaixa);
 		}
 		
 	}
 	
-	public void marcaPonto(int posc, int posFruta, int altFruta)
-	{
-		
-		if ( (posFruta > (posc + 1) || posFruta < (posc + 1)) && (altFruta > 840))
-		{
-			
-			totalPontosx = totalPontosx + 2;
-		}
-		
-	}
+	
 	
 	public int marcaPontos(int v1, int v2, int v3)
 	{
 		
-		if ( ((v2 < (v1 + 50)) && (v2 > (v1 - 50)) )  && (v3 > 840 ))
+		if ( ((v2 < (v1 + (600 * 0.15))) && (v2 > (v1 - (600 * 0.15))) )  && (v3 > (alturaTela * 0.87) ))
 		{
 			
 			totalPontosx = totalPontosx + 1;
 			mudaPontos(totalPontosx);
+			somAlerta();
 		}
 		
 		return totalPontosx;
@@ -254,11 +238,11 @@ public class MetodosJogo extends Tela {
 	}
 	
 	
-	public void mudaPontos(int xyz)
+	public void mudaPontos(int parametroPontos)
 	{
 		
 		
-		String refPts = Integer.toString(xyz);
+		String refPts = Integer.toString(parametroPontos);
 		
 		String refPontos1 = refPts.substring(0,1);
 		p1 = Integer.parseInt(refPontos1);
@@ -285,7 +269,7 @@ public class MetodosJogo extends Tela {
 		Drawable imagem = this.getResources().getDrawable(numeros[p1]);
 		pontoUm.setImageDrawable(imagem);
 		
-		if (xyz > 9)
+		if (parametroPontos > 9)
 		{
 			String refPontos2 = refPts.substring(1,2);
 			p2 = Integer.parseInt(refPontos2);
@@ -299,7 +283,7 @@ public class MetodosJogo extends Tela {
 		
 	}
 	
-	public void mudaTempo(int xyz)
+	public void mudaTempo(int parametroTempo)
 	{
 		
 		Integer numeros[] = new Integer[10];
@@ -319,18 +303,18 @@ public class MetodosJogo extends Tela {
 		ImageView tempoUm = (ImageView)findViewById(R.id.tempo1);
 		ImageView tempoDois = (ImageView)findViewById(R.id.tempo2);
 		
-		if (xyz > 9)
+		if (parametroTempo > 9)
 		{
 			
-			String refPts = Integer.toString(xyz);
+			String refTempo = Integer.toString(parametroTempo);
 			
-			String refPontos1 = refPts.substring(0,1);
-			p1 = Integer.parseInt(refPontos1);
+			String refTempo1 = refTempo.substring(0,1);
+			p1 = Integer.parseInt(refTempo1);
 			
 			Drawable imagem = this.getResources().getDrawable(numeros[p1]);
 			tempoUm.setImageDrawable(imagem);
 			
-			String refPontos2 = refPts.substring(1,2);
+			String refPontos2 = refTempo.substring(1,2);
 			p2 = Integer.parseInt(refPontos2);
 			
 			Drawable imagem2 = this.getResources().getDrawable(numeros[p2]);
@@ -341,10 +325,10 @@ public class MetodosJogo extends Tela {
 		else
 		{
 
-			String refPts = Integer.toString(xyz);
+			String refTempo = Integer.toString(parametroTempo);
 			
-			String refPontos1 = refPts.substring(0,1);
-			p1 = Integer.parseInt(refPontos1);
+			String refTempo1 = refTempo.substring(0,1);
+			p1 = Integer.parseInt(refTempo1);
 			
 			
 			Drawable imagem = this.getResources().getDrawable(numeros[p1]);
@@ -352,6 +336,15 @@ public class MetodosJogo extends Tela {
 			tempoDois.setVisibility(View.GONE);
 			
 		}	
+		
+	}
+	
+	public void somAlerta()
+	{
+		
+		soundp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
+		int ponto = soundp.load(this, R.raw.beep, 1); 
+		soundp.play(ponto, 1, 1, 0, 0, 1);
 		
 	}
 }
