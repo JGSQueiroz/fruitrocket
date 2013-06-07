@@ -21,19 +21,14 @@ public class MainActivity extends MetodosJogo {
 	TextView texto;
 	ImageView tempoLabel, pontosLabel;
 
-	 SoundPool ssp;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
 		
-		ssp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
-		int ponto = ssp.load(this, R.raw.beep, 1); 
-		ssp.play(ponto, 1, 1, 0, 0, 1);
-		
-		
 		capturaTamanhoTela();
+		carregaSom();
 			
 		texto  = (TextView)findViewById(R.id.texto);
 		texto.setText("alt é" + alturaTela );
@@ -55,7 +50,8 @@ public class MainActivity extends MetodosJogo {
 			public void run() {
 				// TODO Auto-generated method stub
 				
-				lancaObjetos();  
+				lancaObjetos(); 
+				
 			    movimentaCaixaFrutas(alturaToque);
 				controle.postDelayed(this, 1);
 							}
@@ -105,7 +101,7 @@ public class MainActivity extends MetodosJogo {
 		{
 		posicaoCaixa = (int) event.getX();
 		alturaToque = (int) event.getY();
-		somAlertaxxx();
+		
 
 		}
 		
@@ -114,14 +110,6 @@ public class MainActivity extends MetodosJogo {
 		return super.onTouchEvent(event);
 		
 		
-		
-	}
-	public void somAlertaxxx()
-	{
-		
-		soundp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
-		int ponto = soundp.load(this, R.raw.beep, 1); 
-		soundp.play(ponto, 1, 1, 0, 0, 1);
 		
 	}
 	

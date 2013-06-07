@@ -17,6 +17,7 @@ public class MetodosJogo extends Tela {
 	
 	public int y1, y2, y3, p1, p2 = 0;
 	
+	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
 	public int tempoJogo = 99;
@@ -27,7 +28,8 @@ public class MetodosJogo extends Tela {
 	public int velocidadeQueda2 = 16;
 	public int velocidadeQueda3 = 6;
 			
-	public SoundPool soundp; 
+	public SoundPool soundp;
+	public int som1;
 
 	int alturaQueda1, alturaQueda2, alturaQueda3, alturaQueda4 = 0;
 	int alturaQueda = 0;
@@ -222,7 +224,7 @@ public class MetodosJogo extends Tela {
 			
 			totalPontosx = totalPontosx + 1;
 			mudaPontos(totalPontosx);
-			somAlerta();
+			somPonto();
 		}
 		
 		return totalPontosx;
@@ -339,12 +341,17 @@ public class MetodosJogo extends Tela {
 		
 	}
 	
-	public void somAlerta()
+	public void carregaSom()
 	{
 		
 		soundp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
-		int ponto = soundp.load(this, R.raw.beep, 1); 
-		soundp.play(ponto, 1, 1, 0, 0, 1);
+		som1 = soundp.load(this, R.raw.bomba, 1); 
 		
+		
+	}
+	public void somPonto()
+	{
+		
+		soundp.play(som1, 1, 1, 0, 0, 1);
 	}
 }
