@@ -5,14 +5,11 @@ import com.fruitrocket.metodos.MetodosJogo;
 
 
 import android.annotation.SuppressLint;
-import android.media.AudioManager;
-import android.media.SoundPool;
+
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.DisplayMetrics;
 import android.view.MotionEvent;
 import android.widget.ImageView;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 @SuppressLint("NewApi")
@@ -31,7 +28,7 @@ public class MainActivity extends MetodosJogo {
 		carregaSom();
 			
 		texto  = (TextView)findViewById(R.id.texto);
-		texto.setText("alt é" + alturaTela );
+		
 	
 		final ImageView fruta1 = (ImageView)findViewById(R.id.maca);
 		final ImageView fruta2 = (ImageView)findViewById(R.id.limao);
@@ -66,8 +63,8 @@ public class MainActivity extends MetodosJogo {
 				controle.postDelayed(this, 1000);
 				
 				marcaPontos((int)(fruta1.getLeft()), (int)(caixa.getLeft()), fruta1.getTop());
-				//marcaPontos((int)(fruta2.getLeft()), (int)(caixa.getLeft()), fruta2.getTop());
-				//marcaPontos((int)(fruta3.getLeft()), (int)(caixa.getLeft()), fruta3.getTop());
+				marcaPontos((int)(fruta2.getLeft()), (int)(caixa.getLeft()), fruta2.getTop());
+				marcaPontos((int)(fruta3.getLeft()), (int)(caixa.getLeft()), fruta3.getTop());
 				
 				
 			}
@@ -80,8 +77,7 @@ public class MainActivity extends MetodosJogo {
 			public void run() {
 				// TODO Auto-generated method stub
 				controle.postDelayed(this, 1000);
-				//texto.setText("Tempo:" + cronometro() + "" + xf + " o id " + frutaImg(1) );
-				texto.setText("Altura Tempo" + larguraTela );
+				texto.setText("fruta" + fruta1.getLeft() +  "caixa" + caixa.getLeft() + "altura" + fruta1.getTop()  );
 				cronometro();
 				
 			}

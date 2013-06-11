@@ -20,13 +20,13 @@ public class MetodosJogo extends Tela {
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
-	public int tempoJogo = 99;
+	public int tempoJogo = 60;
 
 	// velocidades ok - 6 fruta2
 	
 	public int velocidadeQueda1 = 6;
-	public int velocidadeQueda2 = 16;
-	public int velocidadeQueda3 = 6;
+	public int velocidadeQueda2 = 6;
+	public int velocidadeQueda3 = 9;
 			
 	public SoundPool soundp;
 	public int som1;
@@ -35,13 +35,7 @@ public class MetodosJogo extends Tela {
 	int alturaQueda = 0;
 	
 	
-	public Integer ajustaTamanhoFruta()
-	{
-		Integer tamanhoFruta = ( (alturaTela * 10) /100); 
-		return  tamanhoFruta;
-	} 
 	
-		
 	
 
 	public Integer frutaImg(int z)
@@ -79,7 +73,9 @@ public class MetodosJogo extends Tela {
 	
 						
 		ImageView imgFruta = (ImageView)findViewById(codFruta);
-		RelativeLayout.LayoutParams pos = new RelativeLayout.LayoutParams(ajustaTamanhoFruta(), ajustaTamanhoFruta());
+		//RelativeLayout.LayoutParams pos = new RelativeLayout.LayoutParams(ajustaTamanhoFruta(), ajustaTamanhoFruta());
+		RelativeLayout.LayoutParams pos = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+		
 		pos.setMargins(distanciaEsquerda, distanciaChao, 0, 0);
 		imgFruta.setLayoutParams(pos);
 		
@@ -144,12 +140,12 @@ public class MetodosJogo extends Tela {
 	}
 
 
-	public Integer controlaQuedaLateral(int x)
+	public Integer controlaQuedaLateral()
 	{
 		
 			
-			int distanciaEsquerda = (int) (Math.random() * ( larguraTela));
-			distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;
+			int distanciaEsquerda = (int) (Math.random() * ( (int) (larguraTela * 0.85)));
+			//distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;
 			//esq = distanciaEsquerda;
 			
 			return distanciaEsquerda;
@@ -170,7 +166,7 @@ public class MetodosJogo extends Tela {
 		
 		if (controlaQueda(1) == 0)
 		{
-			y1 = controlaQuedaLateral(y1);
+			y1 = controlaQuedaLateral();
 		}
 		else
 		{
@@ -181,7 +177,7 @@ public class MetodosJogo extends Tela {
 		
 		if (controlaQueda(2) == 0)
 		{
-			y2 = controlaQuedaLateral(y2);
+			y2 = controlaQuedaLateral();
 		}
 		else
 		{	
@@ -191,11 +187,11 @@ public class MetodosJogo extends Tela {
 		
 		if (controlaQueda(3) == 0)
 		{
-			y3 = controlaQuedaLateral(y3);
+			y3 = controlaQuedaLateral();
 		}
 		else
 		{
-		movimentaFruta(frutaImg(3), controlaQueda(3), y3);
+			movimentaFruta(frutaImg(3), controlaQueda(3), y3);
 		}			
 		
 		movimentaCaixaFrutas(alturaToque);
@@ -209,17 +205,17 @@ public class MetodosJogo extends Tela {
 		if (alturaToque > ((int)(alturaTela * 0.87)) || alturaToque == 0)
 		{
 			movimentaFruta(frutaImg(4),(int)(alturaTela * 0.9) , posicaoCaixa);
-			//movimentaFruta(4,(int)(alturaTela * 0.9) , posicaoCaixa);
+			
 		}
 		
 	}
 	
 	
 	
-	public int marcaPontos(int v1, int v2, int v3)
+	public int marcaPontos(int fruta, int caixa, int alturaFruta)
 	{
 		
-		if ( ((v2 < (v1 + (600 * 0.15))) && (v2 > (v1 - (600 * 0.15))) )  && (v3 > (alturaTela * 0.87) ))
+		if ( ((caixa < (fruta + (larguraTela * 0.1))) && (caixa > (fruta - (larguraTela * 0.1))) )  && (alturaFruta > (alturaTela * 0.8) ))
 		{
 			
 			totalPontosx = totalPontosx + 1;
@@ -345,13 +341,12 @@ public class MetodosJogo extends Tela {
 	{
 		
 		soundp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
-		som1 = soundp.load(this, R.raw.bomba, 1); 
+		som1 = soundp.load(this, R.raw.ponto, 1); 
 		
 		
 	}
 	public void somPonto()
 	{
-		
 		soundp.play(som1, 1, 1, 0, 0, 1);
 	}
 }
