@@ -23,7 +23,7 @@ public class MainActivity extends MetodosJogo {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		
+		 
 		capturaTamanhoTela();
 		carregaSom();
 			
@@ -34,6 +34,7 @@ public class MainActivity extends MetodosJogo {
 		final ImageView fruta2 = (ImageView)findViewById(R.id.limao);
 		final ImageView fruta3 = (ImageView)findViewById(R.id.pera);
 		final ImageView caixa = (ImageView)findViewById(R.id.panela);
+		final ImageView foguete = (ImageView)findViewById(R.id.foguete);
 		
 		
 		
@@ -49,8 +50,8 @@ public class MainActivity extends MetodosJogo {
 				
 				lancaObjetos(); 
 				
-			    movimentaCaixaFrutas(alturaToque);
-				controle.postDelayed(this, 1);
+			    		movimentaCaixaFrutas(alturaToque);
+			    		controle.postDelayed(this, 1);
 							}
 		};
 			controle.postDelayed(acionaJogo, 1);
@@ -60,16 +61,17 @@ public class MainActivity extends MetodosJogo {
 			@Override
 			public void run() {
 				// TODO Auto-generated method stub
-				controle.postDelayed(this, 1000);
+				controle.postDelayed(this, 300);
 				
-				marcaPontos((int)(fruta1.getLeft()), (int)(caixa.getLeft()), fruta1.getTop());
-				marcaPontos((int)(fruta2.getLeft()), (int)(caixa.getLeft()), fruta2.getTop());
-				marcaPontos((int)(fruta3.getLeft()), (int)(caixa.getLeft()), fruta3.getTop());
+				marcaPontos((int)(fruta1.getLeft()), (int)(caixa.getLeft()), fruta1.getTop(), 1);
+				marcaPontos((int)(fruta2.getLeft()), (int)(caixa.getLeft()), fruta2.getTop(), 2);
+				marcaPontos((int)(fruta3.getLeft()), (int)(caixa.getLeft()), fruta3.getTop(), 3);
+				marcaPontos((int)(foguete.getLeft()), (int)(caixa.getLeft()), foguete.getTop(), 4);
 				
 				
 			}
 		};	
-		controle.postDelayed(somaPontos, 1);
+		controle.postDelayed(somaPontos, 1000);
 		
 		Runnable tempoCorrido  = new Runnable() {
 			
@@ -77,7 +79,7 @@ public class MainActivity extends MetodosJogo {
 			public void run() {
 				// TODO Auto-generated method stub
 				controle.postDelayed(this, 1000);
-				texto.setText("fruta" + fruta1.getLeft() +  "caixa" + caixa.getLeft() + "altura" + fruta1.getTop()  );
+				texto.setText("fruta" + foguete.getLeft() +  "caixa" + caixa.getLeft() + "altura" + foguete.getTop()  );
 				cronometro();
 				
 			}

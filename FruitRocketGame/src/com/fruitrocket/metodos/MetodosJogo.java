@@ -15,26 +15,27 @@ public class MetodosJogo extends Tela {
 	
 	public Integer alturaTela, larguraTela;
 	
-	public int y1, y2, y3, p1, p2 = 0;
+	public int y1, y2, y3, y4, p1, p2 = 0;
 	
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
 	public int tempoJogo = 60;
 
-	// velocidades ok - 6 fruta2
+	
 	
 	public int velocidadeQueda1 = 6;
 	public int velocidadeQueda2 = 6;
-	public int velocidadeQueda3 = 9;
+	public int velocidadeQueda3 = 11;
+	public int velocidadeQueda4 = 11;
 			
 	public SoundPool soundp;
-	public int som1;
+	public int som1, som2, som3;
 
 	int alturaQueda1, alturaQueda2, alturaQueda3, alturaQueda4 = 0;
 	int alturaQueda = 0;
 	
-	
+	 
 	
 	
 
@@ -62,9 +63,18 @@ public class MetodosJogo extends Tela {
 		if (z == 4)
 		{
 			
+		ImageView ff = (ImageView)findViewById(R.id.foguete);
+		zx = ff.getId();	
+		}
+		
+		if (z == 5)
+		{
+			
 		ImageView ff = (ImageView)findViewById(R.id.panela);
 		zx = ff.getId();	
 		}
+		
+	
 		return zx;
 	}
 	
@@ -73,7 +83,6 @@ public class MetodosJogo extends Tela {
 	
 						
 		ImageView imgFruta = (ImageView)findViewById(codFruta);
-		//RelativeLayout.LayoutParams pos = new RelativeLayout.LayoutParams(ajustaTamanhoFruta(), ajustaTamanhoFruta());
 		RelativeLayout.LayoutParams pos = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
 		
 		pos.setMargins(distanciaEsquerda, distanciaChao, 0, 0);
@@ -135,6 +144,18 @@ public class MetodosJogo extends Tela {
 				return alturaQueda3;	
 			}
 			
+			if (fruta == 4)
+			{
+				alturaQueda4 = alturaQueda4 + velocidadeQueda4;
+				
+				if (alturaQueda4 >= alturaTela)
+				{
+					alturaQueda4 = 0;
+				
+				}
+			
+				return alturaQueda4;	
+			}
 			
 			return null; 
 	}
@@ -145,9 +166,6 @@ public class MetodosJogo extends Tela {
 		
 			
 			int distanciaEsquerda = (int) (Math.random() * ( (int) (larguraTela * 0.85)));
-			//distanciaEsquerda = (int)(distanciaEsquerda * 0.85)  ;
-			//esq = distanciaEsquerda;
-			
 			return distanciaEsquerda;
 		
 	}
@@ -194,6 +212,18 @@ public class MetodosJogo extends Tela {
 			movimentaFruta(frutaImg(3), controlaQueda(3), y3);
 		}			
 		
+		
+
+		if (controlaQueda(4) == 0)
+		{
+			y4 = controlaQuedaLateral();
+		}
+		else
+		{
+			movimentaFruta(frutaImg(4), controlaQueda(4), y4);
+		}			
+		
+		
 		movimentaCaixaFrutas(alturaToque);
 		
 		
@@ -204,7 +234,7 @@ public class MetodosJogo extends Tela {
 		
 		if (alturaToque > ((int)(alturaTela * 0.87)) || alturaToque == 0)
 		{
-			movimentaFruta(frutaImg(4),(int)(alturaTela * 0.9) , posicaoCaixa);
+			movimentaFruta(frutaImg(5),(int)(alturaTela * 0.9) , posicaoCaixa);
 			
 		}
 		
@@ -212,15 +242,36 @@ public class MetodosJogo extends Tela {
 	
 	
 	
-	public int marcaPontos(int fruta, int caixa, int alturaFruta)
+	public int marcaPontos(int posicaoFruta, int caixa, int alturaFruta, int refFruta)
 	{
 		
-		if ( ((caixa < (fruta + (larguraTela * 0.1))) && (caixa > (fruta - (larguraTela * 0.1))) )  && (alturaFruta > (alturaTela * 0.8) ))
+		if ( ((caixa < ( posicaoFruta + (larguraTela * 0.1))) && (caixa > (posicaoFruta - (larguraTela * 0.1))) )  && (alturaFruta > (alturaTela * 0.8) ))
 		{
 			
-			totalPontosx = totalPontosx + 1;
-			mudaPontos(totalPontosx);
-			somPonto();
+			
+				if (refFruta == 1 || refFruta == 2)
+				{
+				totalPontosx = totalPontosx + 1;
+				somPonto(refFruta);
+				mudaPontos(totalPontosx);
+				}
+				else if (refFruta == 3)
+				{
+					
+					totalPontosx = totalPontosx + 3;
+					somPonto(refFruta);
+					mudaPontos(totalPontosx);
+					
+					
+				}
+				else if (refFruta == 4)
+				{
+					totalPontosx = totalPontosx - 4;
+					somPonto(refFruta);
+					mudaPontos(totalPontosx);
+					
+					
+				}
 		}
 		
 		return totalPontosx;
@@ -337,16 +388,39 @@ public class MetodosJogo extends Tela {
 		
 	}
 	
+	
+	
+	
+	
 	public void carregaSom()
 	{
 		
 		soundp = new SoundPool(5, AudioManager.STREAM_MUSIC, 1);
+		som2 = soundp.load(this, R.raw.yeah, 1); 
 		som1 = soundp.load(this, R.raw.ponto, 1); 
+		som3 = soundp.load(this, R.raw.bomba, 1);
 		
 		
 	}
-	public void somPonto()
+	
+	
+	public void somPonto(int refFruta)
 	{
-		soundp.play(som1, 1, 1, 0, 0, 1);
+		
+		if (refFruta == 1 || refFruta == 2)
+		{
+			soundp.play(som1, 1, 1, 0, 0, 1);
+		}
+		else if (refFruta == 3)
+		{
+			
+			soundp.play(som2, 1, 1, 0, 0, 1);
+		}
+		else
+		{
+			soundp.play(som3, 1, 1, 0, 0, 1);
+			
+		}	
+		
 	}
 }

@@ -79,6 +79,17 @@
          android:src="@drawable/imgpera"
          android:id="@+id/pera"
          
+   
+   
+         />
+   
+     
+     <ImageView 
+         android:layout_width="wrap_content"
+         android:layout_height="wrap_content"
+         android:id="@+id/foguete"
+         android:src="@drawable/imgfoguete"
+         
          />
      
      <ImageView 
@@ -89,7 +100,8 @@
          android:layout_alignParentBottom="true"
          android:layout_centerInParent="true"
          />
-	
+     
+   
     <TextView 
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
