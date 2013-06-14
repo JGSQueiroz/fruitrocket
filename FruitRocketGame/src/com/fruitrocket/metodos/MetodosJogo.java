@@ -21,12 +21,12 @@ public class MetodosJogo extends Tela {
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
-	public int tempoJogo = 60;
+	public int tempoJogo = 30;
 
 	
 	
-	public int velocidadeQueda1 = 6;
-	public int velocidadeQueda2 = 6;
+	public int velocidadeQueda1 = 9;
+	public int velocidadeQueda2 = 9;
 	public int velocidadeQueda3 = 11;
 	public int velocidadeQueda4 = 11;
 			
@@ -410,10 +410,7 @@ public class MetodosJogo extends Tela {
 		
 	}
 	
-	
-	
-	
-	
+		
 	public void carregaSom()
 	{
 		

@@ -17,7 +17,7 @@ public class MainActivity extends MetodosJogo {
 	
 	TextView texto;
 	ImageView tempoLabel, pontosLabel;
-
+	int tjogo = 10;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -41,7 +41,7 @@ public class MainActivity extends MetodosJogo {
 		
 		final Handler controle = new Handler();
 		
-		Runnable acionaJogo = new Runnable() {
+		final Runnable acionaJogo = new Runnable() {
 			
 			@SuppressLint("NewApi")
 			@Override
@@ -54,9 +54,9 @@ public class MainActivity extends MetodosJogo {
 			    		controle.postDelayed(this, 1);
 							}
 		};
-			controle.postDelayed(acionaJogo, 1);
+			
 	
-		Runnable somaPontos = new Runnable() {
+		final Runnable somaPontos = new Runnable() {
 			
 			@Override
 			public void run() {
@@ -71,9 +71,11 @@ public class MainActivity extends MetodosJogo {
 				
 			}
 		};	
-		controle.postDelayed(somaPontos, 1000);
 		
-		Runnable tempoCorrido  = new Runnable() {
+		
+		
+		
+		final Runnable tempoCorrido  = new Runnable() {
 			
 			@Override
 			public void run() {
@@ -81,11 +83,47 @@ public class MainActivity extends MetodosJogo {
 				controle.postDelayed(this, 1000);
 				//texto.setText("fruta" + foguete.getLeft() +  "caixa" + caixa.getLeft() + "altura" + foguete.getTop()  );
 				texto.setText("foguetes" + foguetesAtingidos);
-				cronometro();
+				tjogo = cronometro();
 				
 			}
-		};controle.postDelayed(tempoCorrido, 1000); 
-	}
+		};
+		
+		
+		final Runnable checaStatusJogo = new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				controle.postDelayed(this, 1);
+				if ( (tjogo < 0 ) || (foguetesAtingidos == 2))
+				{
+					controle.removeCallbacks(tempoCorrido);
+					controle.removeCallbacks(somaPontos);
+					controle.removeCallbacks(acionaJogo);
+					
+				}
+			}
+		};
+		
+		
+		final Runnable rodaJogo = new Runnable() {
+			
+			@Override
+			public void run() {
+				// TODO Auto-generated method stub
+				
+				controle.postDelayed(this, 100000);
+				controle.postDelayed(somaPontos, 1000);
+				controle.postDelayed(acionaJogo, 1);
+				controle.postDelayed(tempoCorrido, 1000); 
+				controle.postDelayed(checaStatusJogo, 1);
+				
+				
+				
+			}
+		}; controle.postDelayed(rodaJogo, 3000);
+		
+			}
 	
 	
 	
