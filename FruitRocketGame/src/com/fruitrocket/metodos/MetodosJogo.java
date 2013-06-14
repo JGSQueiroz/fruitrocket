@@ -17,6 +17,7 @@ public class MetodosJogo extends Tela {
 	
 	public int y1, y2, y3, y4, p1, p2 = 0;
 	
+	public int foguetesAtingidos = 0;
 	
 	public int posicaoCaixa, alturaToque, totalPontosx = 0;
 	
@@ -36,7 +37,26 @@ public class MetodosJogo extends Tela {
 	int alturaQueda = 0;
 	
 	 
-	
+	public void foguteAtingido(int ponto)
+	{
+		
+		
+		if  (ponto == 1)
+		{
+			ImageView foguete1 = (ImageView)findViewById(R.id.fogueteponto1);
+			Drawable fogueteAtivado = getResources().getDrawable(R.drawable.imgfogueteativado);
+			foguete1.setImageDrawable(fogueteAtivado);
+		}	
+		if (ponto == 2)
+		{
+			ImageView foguete2 = (ImageView)findViewById(R.id.fogueteponto2);
+			Drawable fogueteAtivado = getResources().getDrawable(R.drawable.imgfogueteativado);
+			foguete2.setImageDrawable(fogueteAtivado);
+			
+		}
+		
+		 
+	}
 	
 
 	public Integer frutaImg(int z)
@@ -73,6 +93,7 @@ public class MetodosJogo extends Tela {
 		ImageView ff = (ImageView)findViewById(R.id.panela);
 		zx = ff.getId();	
 		}
+		
 		
 	
 		return zx;
@@ -266,9 +287,10 @@ public class MetodosJogo extends Tela {
 				}
 				else if (refFruta == 4)
 				{
-					totalPontosx = totalPontosx - 4;
+					foguetesAtingidos = foguetesAtingidos + 1;
 					somPonto(refFruta);
-					mudaPontos(totalPontosx);
+					foguteAtingido(foguetesAtingidos);
+					
 					
 					
 				}

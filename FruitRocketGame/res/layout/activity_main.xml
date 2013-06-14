@@ -42,6 +42,23 @@
 	<ImageView 
 	    android:layout_width="wrap_content"
 	    android:layout_height="wrap_content"
+	    android:src="@drawable/imgfoguetedesativado"
+	    android:id="@+id/fogueteponto2"
+	    android:layout_alignParentRight="true"
+	    />
+	
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
+	    android:src="@drawable/imgfoguetedesativado"
+	    android:id="@+id/fogueteponto1"
+	    android:layout_toLeftOf="@+id/fogueteponto2"
+	    />
+	
+	
+	<ImageView 
+	    android:layout_width="wrap_content"
+	    android:layout_height="wrap_content"
 	    android:src="@drawable/numero_7"
 	    android:layout_below="@id/pontos1"
 	    android:layout_toRightOf="@id/labelTempo"

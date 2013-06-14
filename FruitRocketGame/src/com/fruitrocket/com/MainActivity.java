@@ -79,7 +79,8 @@ public class MainActivity extends MetodosJogo {
 			public void run() {
 				// TODO Auto-generated method stub
 				controle.postDelayed(this, 1000);
-				texto.setText("fruta" + foguete.getLeft() +  "caixa" + caixa.getLeft() + "altura" + foguete.getTop()  );
+				//texto.setText("fruta" + foguete.getLeft() +  "caixa" + caixa.getLeft() + "altura" + foguete.getTop()  );
+				texto.setText("foguetes" + foguetesAtingidos);
 				cronometro();
 				
 			}
