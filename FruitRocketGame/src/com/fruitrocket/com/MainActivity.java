@@ -19,17 +19,44 @@ public class MainActivity extends MetodosJogo {
 	ImageView tempoLabel, pontosLabel;
 	int tjogo = 10;
 	
+	
+	
+	
+	Handler controle = new Handler();
+	
+	Runnable acionaJogo = new Runnable() {
+		
+		@SuppressLint("NewApi")
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			
+			lancaObjetos(); 
+			
+		    		movimentaCaixaFrutas(alturaToque);
+		    		controle.postDelayed(this, 1);
+						}
+	};
+	
+	
+	Runnable tempoCorrido  = new Runnable() {
+		
+		@Override
+		public void run() {
+			// TODO Auto-generated method stub
+			controle.postDelayed(this, 1000);
+			//texto.setText("fruta" + foguete.getLeft() +  "caixa" + caixa.getLeft() + "altura" + foguete.getTop()  );
+			texto.setText("foguetes" + foguetesAtingidos);
+			tjogo = cronometro();
+			
+		}
+	};
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_main);
-		 
-		capturaTamanhoTela();
-		carregaSom();
-			
-		texto  = (TextView)findViewById(R.id.texto);
 		
-	
 		final ImageView fruta1 = (ImageView)findViewById(R.id.maca);
 		final ImageView fruta2 = (ImageView)findViewById(R.id.limao);
 		final ImageView fruta3 = (ImageView)findViewById(R.id.pera);
@@ -38,22 +65,18 @@ public class MainActivity extends MetodosJogo {
 		
 		
 		
-		
-		final Handler controle = new Handler();
-		
-		final Runnable acionaJogo = new Runnable() {
+		capturaTamanhoTela();
+		carregaSom();
 			
-			@SuppressLint("NewApi")
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				
-				lancaObjetos(); 
-				
-			    		movimentaCaixaFrutas(alturaToque);
-			    		controle.postDelayed(this, 1);
-							}
-		};
+		texto  = (TextView)findViewById(R.id.texto);
+		
+	
+		
+		
+		
+		
+		
+		
 			
 	
 		final Runnable somaPontos = new Runnable() {
@@ -75,18 +98,6 @@ public class MainActivity extends MetodosJogo {
 		
 		
 		
-		final Runnable tempoCorrido  = new Runnable() {
-			
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				controle.postDelayed(this, 1000);
-				//texto.setText("fruta" + foguete.getLeft() +  "caixa" + caixa.getLeft() + "altura" + foguete.getTop()  );
-				texto.setText("foguetes" + foguetesAtingidos);
-				tjogo = cronometro();
-				
-			}
-		};
 		
 		
 		final Runnable checaStatusJogo = new Runnable() {
@@ -112,7 +123,6 @@ public class MainActivity extends MetodosJogo {
 			public void run() {
 				// TODO Auto-generated method stub
 				
-				controle.postDelayed(this, 100000);
 				controle.postDelayed(somaPontos, 1000);
 				controle.postDelayed(acionaJogo, 1);
 				controle.postDelayed(tempoCorrido, 1000); 
